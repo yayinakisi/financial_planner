@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Financial Overview{% endblock %}
+
+{% block content %}
+    <h1>Financial Overview</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Income</th>
+                <th>Expenses</th>
+                <th>Savings</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for saving in savings %}
+                <tr>
+                    <td>{{ saving.month|date:"F Y" }}</td>
+                    <td>{{ saving.total + saving.expense }}</td>
+                    <td>{{ saving.expense }}</td>
+                    <td>{{ saving.total }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

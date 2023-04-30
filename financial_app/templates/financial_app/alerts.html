@@ -1,0 +1,21 @@
+{% extends 'financial_app/base.html' %}
+
+{% block title %}Alerts and Notifications{% endblock %}
+
+{% block content %}
+  <h1>Alerts and Notifications</h1>
+
+  <div class="list-group">
+    {% for alert in alerts %}
+      <a href="{{ alert.link }}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ alert.title }}</h5>
+          <small>{{ alert.timestamp }}</small>
+        </div>
+        <p class="mb-1">{{ alert.description }}</p>
+      </a>
+    {% empty %}
+      <div class="alert alert-info">No alerts or notifications at the moment.</div>
+    {% endfor %}
+  </div>
+{% endblock %}

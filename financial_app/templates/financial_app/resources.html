@@ -1,0 +1,23 @@
+{% extends 'financial_app/base.html' %}
+
+{% block title %}Resources - AI-Powered Financial Planning Platform{% endblock %}
+
+{% block content %}
+  <h1>Resources</h1>
+
+  <div class="row">
+    {% for resource in resources %}
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">{{ resource.title }}</div>
+          <div class="card-body">
+            <p>{{ resource.description }}</p>
+          </div>
+          <div class="card-footer">
+            <a href="{{ resource.link }}" target="_blank" class="btn btn-primary">Visit Resource</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

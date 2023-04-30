@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Cash Flow{% endblock %}
+
+{% block content %}
+    <h1>Cash Flow</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Income</th>
+                <th>Expenses</th>
+                <th>Cash Flow</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ income }}</td>
+                <td>{{ expenses }}</td>
+                <td>{{ cash_flow }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

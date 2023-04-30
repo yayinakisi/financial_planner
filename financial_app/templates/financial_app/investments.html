@@ -1,0 +1,44 @@
+{% extends 'financial_app/base.html' %}
+
+{% block title %}Investments - AI-Powered Financial Planning Platform{% endblock %}
+
+{% block content %}
+  <h1>Investments</h1>
+
+  <form method="post" action="{% url 'add_investment' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="investment_name" class="form-label">Investment Name</label>
+      <input type="text" class="form-control" id="investment_name" name="investment_name" required>
+    </div>
+    <div class="mb-3">
+      <label for="investment_amount" class="form-label">Investment Amount</label>
+      <input type="number" step="0.01" class="form-control" id="investment_amount" name="investment_amount" required>
+    </div>
+    <div class="mb-3">
+      <label for="investment_date" class="form-label">Investment Date</label>
+      <input type="date" class="form-control" id="investment_date" name="investment_date" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Investment</button>
+  </form>
+
+  <h3 class="mt-5">Your Investments</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Investment Name</th>
+        <th scope="col">Investment Amount</th>
+        <th scope="col">Investment Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for investment in investments %}
+        <tr>
+          <td>{{ investment.name }}</td>
+          <td>{{ investment.amount }}</td>
+          <td>{{ investment.investment_date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

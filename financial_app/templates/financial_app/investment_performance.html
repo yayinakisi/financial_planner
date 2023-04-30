@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Investment Performance{% endblock %}
+
+{% block content %}
+    <h1>Investment Performance</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Investment</th>
+                {% for benchmark in benchmarks %}
+                    <th>{{ benchmark.name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for investment in investments %}
+                <tr>
+                    <td>{{ investment.name }}</td>
+                    {% for benchmark in benchmarks %}
+                        <td>{{ investment.return_percentage|floatformat:2 }}% / {{ benchmark.return_percentage|floatformat:2 }}%</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

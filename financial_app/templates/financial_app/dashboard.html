@@ -1,0 +1,45 @@
+{% extends 'financial_app/base.html' %}
+
+{% block title %}Dashboard - AI-Powered Financial Planning Platform{% endblock %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-header">Financial Goals</div>
+        <div class="card-body">
+          <h3>{{ goals_count }}</h3>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'goals' %}" class="btn btn-primary">View Goals</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-header">Investments</div>
+        <div class="card-body">
+          <h3>{{ investments_count }}</h3>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'investments' %}" class="btn btn-primary">View Investments</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-header">Budget</div>
+        <div class="card-body">
+          <h3>{{ expenses_count }}</h3>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'budget' %}" class="btn btn-primary">View Budget</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

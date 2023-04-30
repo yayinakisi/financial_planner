@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Expense Analysis{% endblock %}
+
+{% block content %}
+    <h1>Expense Analysis</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Expense Category</th>
+                <th>Total Expense</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in category_expenses %}
+                <tr>
+                    <td>{{ item.category.name }}</td>
+                    <td>{{ item.total_expense|floatformat:2 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

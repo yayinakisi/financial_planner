@@ -1,0 +1,44 @@
+{% extends 'financial_app/base.html' %}
+
+{% block title %}Financial Goals - AI-Powered Financial Planning Platform{% endblock %}
+
+{% block content %}
+  <h1>Financial Goals</h1>
+
+  <form method="post" action="{% url 'add_goal' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="goal_name" class="form-label">Goal Name</label>
+      <input type="text" class="form-control" id="goal_name" name="goal_name" required>
+    </div>
+    <div class="mb-3">
+      <label for="goal_amount" class="form-label">Goal Amount</label>
+      <input type="number" step="0.01" class="form-control" id="goal_amount" name="goal_amount" required>
+    </div>
+    <div class="mb-3">
+      <label for="goal_date" class="form-label">Goal Date</label>
+      <input type="date" class="form-control" id="goal_date" name="goal_date" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Goal</button>
+  </form>
+
+  <h3 class="mt-5">Your Financial Goals</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Goal Name</th>
+        <th scope="col">Goal Amount</th>
+        <th scope="col">Goal Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for goal in goals %}
+        <tr>
+          <td>{{ goal.name }}</td>
+          <td>{{ goal.amount }}</td>
+          <td>{{ goal.goal_date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

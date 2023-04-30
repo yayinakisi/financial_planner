@@ -1,0 +1,37 @@
+{% extends 'financial_app/base.html' %}
+
+{% block title %}Portfolio Analysis - AI-Powered Financial Planning Platform{% endblock %}
+
+{% block content %}
+  <h1>Portfolio Analysis</h1>
+  {% if error_message %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>
+{% else %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Purchase Price</th>
+        <th scope="col">Current Price</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stock in stock_data %}
+        <tr>
+          <td>{{ stock.symbol }}</td>
+          <td>{{ stock.shares }}</td>
+          <td>{{ stock.purchase_price }}</td>
+          <td>{{ stock.current_price }}</td>
+          <td>{{ stock.value }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Total Value: {{ total_value }}</h2>
+  {% endif %}
+{% endblock %}
